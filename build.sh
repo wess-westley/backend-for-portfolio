@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -o errexit  
 
-
+cd core
 pip install -r requirements.txt
 
 python core/manage.py collectstatic --no-input
