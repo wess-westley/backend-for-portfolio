@@ -3,8 +3,9 @@ set -o errexit
 
 pip install -r requirements.txt
 
-# Move into core where manage.py is
-cd core
+# Run Django management commands from the "core" folder
+python core/manage.py collectstatic --no-input
+python core/manage.py migrate
 
-python manage.py collectstatic --no-input
-python manage.py migrate
+# Start Gunicorn (Django entry point)
+gunicorn core.wsgi:application --bind 0.0.0.0:8000 --workers 3
