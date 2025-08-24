@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -o errexit
-
+echo "Current directory: $(pwd)"
+ls -la
+ls -la core/
 pip install -r requirements.txt
 
 python core/manage.py collectstatic --no-input
